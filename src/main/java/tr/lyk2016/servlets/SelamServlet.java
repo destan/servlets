@@ -13,12 +13,20 @@ public class SelamServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		String name = req.getParameter("name");
-		
-//		resp.getWriter().write("Selam " + name);
-		
+
+		// resp.getWriter().write("Selam " + name);
+
 		req.setAttribute("user", name);
+		req.getRequestDispatcher("selam.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String username = req.getParameter("username");
+
+		req.setAttribute("user", username);
 		req.getRequestDispatcher("selam.jsp").forward(req, resp);
 	}
 }
