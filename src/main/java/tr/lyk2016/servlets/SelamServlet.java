@@ -8,11 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/hello")
-public class HelloServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/selam")
+public class SelamServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.getWriter().write("<h1>Hello Web</h1>");
+		
+		String name = req.getParameter("name");
+		
+//		resp.getWriter().write("Selam " + name);
+		
+		req.setAttribute("user", name);
+		req.getRequestDispatcher("selam.jsp").forward(req, resp);
 	}
 }
